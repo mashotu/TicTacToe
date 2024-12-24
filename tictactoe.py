@@ -4,18 +4,18 @@ game_board = [
     [7, 8, 9]
 ]
 
-board_size = len(game_board)
+BOARD_SIZE = len(game_board)
 fill_tracker = []
 
 def display_board():
-    divider = (('-' * board_size + '|') * board_size) # for future make bigger tictactoe boards that have adaptable code
+    divider = (('-' * BOARD_SIZE + '|') * BOARD_SIZE) # for future make bigger tictactoe boards that have adaptable code
     divider_len = len(divider)
     
     print()
 
     for i, row in enumerate(game_board):
         print('|'.join(f'{cell:^3}' for cell in row))
-        if i < board_size - 1:
+        if i < BOARD_SIZE - 1:
             print(divider[:divider_len - 1])
     
     print()
@@ -35,25 +35,25 @@ def replace_num(num, replacement):
                 break
 
 def check_rows():
-    for i in range(board_size):
-        if game_board[i] == (['O'] * board_size) or game_board[i] == (['X'] * board_size):
+    for i in range(BOARD_SIZE):
+        if game_board[i] == (['O'] * BOARD_SIZE) or game_board[i] == (['X'] * BOARD_SIZE):
             return True
         else: 
            return False
 
 
 def check_cols():
-    for col in range(board_size):
-        num_lst = [game_board[row][col] for row in range(board_size)]
-        if num_lst == ['O'] * board_size or num_lst == ['X'] * board_size:
+    for col in range(BOARD_SIZE):
+        num_lst = [game_board[row][col] for row in range(BOARD_SIZE)]
+        if num_lst == ['O'] * BOARD_SIZE or num_lst == ['X'] * BOARD_SIZE:
             return True
     return False
 
 def check_diag():
-    l_diag = [game_board[i][i] for i in range(board_size)]
-    u_diag = [game_board[i][board_size - 1 - i] for i in range(board_size)]
+    l_diag = [game_board[i][i] for i in range(BOARD_SIZE)]
+    u_diag = [game_board[i][BOARD_SIZE - 1 - i] for i in range(BOARD_SIZE)]
 
-    if (l_diag == ['O'] * board_size or u_diag == ['O'] * board_size) or (l_diag == ['X'] * board_size or u_diag == ['X'] * board_size):
+    if (l_diag == ['O'] * BOARD_SIZE or u_diag == ['O'] * BOARD_SIZE) or (l_diag == ['X'] * BOARD_SIZE or u_diag == ['X'] * BOARD_SIZE):
         return True
     else:
         return False
