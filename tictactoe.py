@@ -1,3 +1,4 @@
+# Add game board generation of different grid sizes later
 game_board = [
     [1, 2, 3],
     [4, 5, 6],
@@ -39,7 +40,7 @@ def check_rows():
         if game_board[i] == (['O'] * BOARD_SIZE) or game_board[i] == (['X'] * BOARD_SIZE):
             return True
         else: 
-           return False
+            return False
 
 
 def check_cols():
@@ -57,6 +58,26 @@ def check_diag():
         return True
     else:
         return False
+
+def start_over():
+    option = input('Would you like to start a new game (y/n/yes/no)? ')
+    user_input = option.lower()
+    while user_input not in {'yes', 'no', 'y', 'n'}:
+        option = input('Please re-enter the option correctly ')
+        user_input = option.lower()
+        
+    if option == 'y' or option == 'yes':
+        global game_board
+        game_board = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ] 
+        fill_tracker.clear()
+        return True
+    else:
+        return False
+
 
 def game():
     p1 = True
@@ -80,10 +101,30 @@ def game():
                 display_board()
 
             if check_rows() or check_cols() or check_diag():
-                print('Player O wins!') if p1 else print('Player X wins!')
+                print("Player O wins!") if p1 else print("Player X wins!")
                 display_board()
-                break
+
+                # if start_over():
+                #     game()
+                # else:
+                #     break
+
+            elif BOARD_SIZE ** 2 == len(fill_tracker):
+                print("Game Over!\n")
+
+                # if start_over():
+                #     game()
+                # else:
+                #     break
+
         except ValueError:
             print("\nInvalid entry, integers only")
 
 game()
+
+# replace_num(7, 'X')
+# replace_num(8, 'X')
+# replace_num(9, 'X')
+
+# print(check_rows())
+
