@@ -37,10 +37,10 @@ def replace_num(num, replacement):
 
 def check_rows():
     for i in range(BOARD_SIZE):
-        if game_board[i] == (['O'] * BOARD_SIZE) or game_board[i] == (['X'] * BOARD_SIZE):
+        if game_board[i] == ['O'] * BOARD_SIZE or game_board[i] == ['X'] * BOARD_SIZE:
             return True
-        else: 
-            return False
+    return False
+
 
 
 def check_cols():
@@ -102,29 +102,21 @@ def game():
 
             if check_rows() or check_cols() or check_diag():
                 print("Player O wins!") if p1 else print("Player X wins!")
-                display_board()
 
-                # if start_over():
-                #     game()
-                # else:
-                #     break
-
+                if start_over():
+                    game()
+                else:
+                    break
             elif BOARD_SIZE ** 2 == len(fill_tracker):
                 print("Game Over!\n")
 
-                # if start_over():
-                #     game()
-                # else:
-                #     break
+                if start_over():
+                    game()
+                else:
+                    break
 
         except ValueError:
             print("\nInvalid entry, integers only")
 
 game()
-
-# replace_num(7, 'X')
-# replace_num(8, 'X')
-# replace_num(9, 'X')
-
-# print(check_rows())
 
