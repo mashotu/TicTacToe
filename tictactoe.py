@@ -1,3 +1,5 @@
+import os
+
 # Add game board generation of different grid sizes later
 game_board = [
     [1, 2, 3],
@@ -60,13 +62,13 @@ def check_diag():
         return False
 
 def start_over():
-    option = input('Would you like to start a new game (y/n/yes/no)? ')
+    option = input('\nWould you like to start a new game (y/n/yes/no)?: ')
     user_input = option.lower()
     while user_input not in {'yes', 'no', 'y', 'n'}:
-        option = input('Please re-enter the option correctly ')
+        option = input('Please re-enter the option correctly: ')
         user_input = option.lower()
         
-    if option == 'y' or option == 'yes':
+    if user_input == 'y' or user_input == 'yes':
         global game_board
         game_board = [
             [1, 2, 3],
@@ -78,6 +80,8 @@ def start_over():
     else:
         return False
 
+def clear_terminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def game():
     p1 = True
@@ -101,8 +105,10 @@ def game():
                 display_board()
 
             if check_rows() or check_cols() or check_diag():
+                clear_terminal()
+                display_board()
                 print("Player O wins!") if p1 else print("Player X wins!")
-
+                
                 if start_over():
                     game()
                 else:
