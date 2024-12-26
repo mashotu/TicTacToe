@@ -64,7 +64,7 @@ def check_diag():
 def start_over():
     option = input('\nWould you like to start a new game (y/n/yes/no)?: ')
     user_input = option.lower()
-    while user_input not in {'yes', 'no', 'y', 'n'}:
+    while user_input not in ['yes', 'no', 'y', 'n']:
         option = input('Please re-enter the option correctly: ')
         user_input = option.lower()
         
@@ -120,7 +120,6 @@ def game():
                     game()
                 else:
                     break
-
         except ValueError:
             print("\nInvalid entry, integers only")
 
