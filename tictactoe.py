@@ -92,8 +92,10 @@ def game():
         try:
             num = int(input(f"Enter a number from 1-9 player {'X' if p1 else 'O'}: "))
 
-            if num < 1 or num > 9 or check_fill_override(num):
-                print("\nOut of range, enter a number within 1-9 or number already filled/can't override\n")
+            if num < 1 or num > 9:
+                print("\nOut of range, enter a number within 1-9\n")
+            elif check_fill_override(num):
+                print("\nThe cell has already been filled, select another one\n")
             else:
                 if p1:
                     replace_num(num, 'X')
