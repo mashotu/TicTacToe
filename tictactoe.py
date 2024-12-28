@@ -62,10 +62,10 @@ def check_diag():
         return False
 
 def start_over():
-    option = input('\nWould you like to start a new game (y/n/yes/no)?: ')
+    option = input("\nWould you like to start a new game (y/n/yes/no)?: ")
     user_input = option.lower()
     while user_input not in ['yes', 'no', 'y', 'n']:
-        option = input('Please re-enter the option correctly: ')
+        option = input("\nThe option entered is invalid (y/n/yes/no): ")
         user_input = option.lower()
         
     if user_input == 'y' or user_input == 'yes':
