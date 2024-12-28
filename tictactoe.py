@@ -112,6 +112,7 @@ def game():
                 print("Player O wins!") if p1 else print("Player X wins!")
                 
                 if start_over():
+                    clear_terminal()
                     game()
                 else:
                     break
@@ -119,6 +120,7 @@ def game():
                 print("Game Over!\n")
 
                 if start_over():
+                    clear_terminal()
                     game()
                 else:
                     break
