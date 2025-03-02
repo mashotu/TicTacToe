@@ -127,5 +127,6 @@ def game():
         except ValueError:
             print("\nInvalid entry, integers only")
 
+# game function
 game()
 
